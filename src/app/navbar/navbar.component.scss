@@ -1,0 +1,12 @@
+ul {
+  li {
+    display: inline-block;
+    padding: 10px 5px;
+    text-decoration: underline;
+    color: var(--teal);
+    transition: all 250ms ease;
+  }
+  li:hover {
+    color: white;
+  }
+}

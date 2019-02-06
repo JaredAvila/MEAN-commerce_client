@@ -1,0 +1,84 @@
+<div class="container">
+  <form
+    style="display: flex; flex-direction: column; width: fit-content; margin: auto"
+    id="myForm"
+  >
+    <input
+      type="text"
+      [(ngModel)]="userRegister.firstName"
+      name="firstName"
+      placeholder="First Name"
+      id="firstName"
+      (keypress)="checkRegisterForm()"
+      [ngClass]="{ hasErrors: regFirstNameError }"
+    />
+    <p class="errorText">{{ regFirstNameErrorMsg }}</p>
+    <input
+      type="text"
+      [(ngModel)]="userRegister.lastName"
+      name="lastName"
+      placeholder="Last Name"
+      (keypress)="checkRegisterForm()"
+      [ngClass]="{ hasErrors: regLastNameError }"
+    />
+    <p class="errorText">{{ regLastNameErrorMsg }}</p>
+    <input
+      type="text"
+      [(ngModel)]="userRegister.email"
+      name="email"
+      placeholder="Email"
+      (keypress)="checkRegisterForm()"
+      [ngClass]="{ hasErrors: regEmailError }"
+    />
+    <p class="errorText">{{ regEmailErrorMsg }}</p>
+    <input
+      type="password"
+      [(ngModel)]="userRegister.password"
+      name="password"
+      placeholder="Password"
+      (keypress)="checkRegisterForm()"
+      [ngClass]="{ hasErrors: regPasswordError }"
+    />
+    <p class="errorText">{{ regPasswordErrorMsg }}</p>
+    <input
+      type="password"
+      [(ngModel)]="userRegister.password2"
+      name="password2"
+      placeholder="Confirm Password"
+      (keypress)="checkRegisterForm()"
+      [ngClass]="{ hasErrors: regPasswordError }"
+    />
+    <button
+      type="button"
+      (click)="onRegister()"
+      disabled="true"
+      class="btn btn-disabled"
+      *ngIf="regForm; else elseBlock"
+    >
+      Register
+    </button>
+    <ng-template #elseBlock>
+      <button type="button" class="btn btn-teal" (click)="onRegister()">
+        Register
+      </button>
+    </ng-template>
+  </form>
+  <form
+    style="display: flex; flex-direction: column; width: fit-content; margin: auto"
+    (submit)="onLogin()"
+  >
+    <input
+      type="text"
+      [(ngModel)]="userLogin.email"
+      name="email"
+      placeholder="Email"
+    />
+    <input
+      type="password"
+      [(ngModel)]="userLogin.password"
+      name="password"
+      placeholder="Password"
+    />
+    <button type="submit" class="btn btn-teal">Login</button>
+  </form>
+</div>

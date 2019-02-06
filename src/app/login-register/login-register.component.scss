@@ -1,0 +1,38 @@
+::placeholder {
+  color: var(--teal);
+}
+
+.container {
+  padding: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+form {
+  padding: 60px;
+  box-shadow: 0px 0px 4px grey;
+  border-radius: 4px;
+  background: var(--lightGrey);
+
+  input {
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid var(--teal);
+    outline: none;
+    margin: 10px;
+    color: var(--darkGrey);
+  }
+}
+
+.hasErrors {
+  box-shadow: 0px 0px 4px red;
+  border: 1px solid red;
+}
+
+.errorText {
+  color: red;
+  width: 200px;
+  font-size: 10pt;
+  text-align: center;
+}
