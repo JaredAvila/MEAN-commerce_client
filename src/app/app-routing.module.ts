@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { LoginRegisterComponent } from "./login-register/login-register.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
-import { ListingsComponent } from "./listings/listings.component";
+import { MyListingsComponent } from "./my-listings/my-listings.component";
 
 const routes: Routes = [
   {
@@ -10,12 +10,12 @@ const routes: Routes = [
     component: LoginRegisterComponent
   },
   {
-    path: "dashboard",
+    path: "dash",
     component: DashboardComponent
   },
   {
     path: "listings",
-    component: ListingsComponent
+    component: MyListingsComponent
   }
 ];
 

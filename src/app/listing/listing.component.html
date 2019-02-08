@@ -1,0 +1,13 @@
+<div class="container">
+  <img [src]="item.image" alt="" />
+  <div class="itemTitle">
+    <h2>{{ item.title }}</h2>
+    <p>{{ item.description }}</p>
+  </div>
+  <div class="itemPrice">
+    <h2>
+      {{ item.price | currency }}
+    </h2>
+    <h5>{{ item.location }}</h5>
+  </div>
+</div>

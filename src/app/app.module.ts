@@ -12,9 +12,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListingsComponent } from './listings/listings.component';
 import { CreateListingComponent } from './create-listing/create-listing.component';
 import { EditListingsComponent } from './edit-listings/edit-listings.component';
+import { ListingComponent } from './listing/listing.component';
+import { EditListingComponent } from './edit-listing/edit-listing.component';
+import { MyListingsComponent } from './my-listings/my-listings.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginRegisterComponent, NavbarComponent, DashboardComponent, ListingsComponent, CreateListingComponent, EditListingsComponent],
+  declarations: [AppComponent, LoginRegisterComponent, NavbarComponent, DashboardComponent, ListingsComponent, CreateListingComponent, EditListingsComponent, ListingComponent, EditListingComponent, MyListingsComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [HttpService],
   bootstrap: [AppComponent]

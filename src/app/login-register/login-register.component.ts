@@ -11,7 +11,7 @@ export class LoginRegisterComponent implements OnInit {
 
   regForm: Boolean = true;
   errors: Array<Object> = [];
-  errorMessage: any;
+  // errorMessage: any;
   // User
   userRegister: Object = {
     firstName: "",
@@ -20,29 +20,37 @@ export class LoginRegisterComponent implements OnInit {
     password: "",
     password2: ""
   };
-  regPasswordError: Boolean = false;
-  regPasswordErrorMsg: String = "";
-  regEmailError: Boolean = false;
-  regEmailErrorMsg: String = "";
-  regFirstNameError: Boolean = false;
-  regFirstNameErrorMsg: String = "";
-  regLastNameError: Boolean = false;
-  regLastNameErrorMsg: String = "";
+  userRegValidation: Object = {
+    passwordError: false,
+    passwordErrorMsg: "",
+    emailError: false,
+    emailErrorMsg: "",
+    firstNameError: false,
+    firstNameErrorMsg: "",
+    lastNameError: false,
+    lastNameErrorMsg: ""
+  };
+
   userLogin: Object = {
     email: "",
     password: ""
   };
+  userLoginValidation: Object = {
+    error: false,
+    errorMsg: ""
+  };
+
   ngOnInit() {}
 
   onRegister() {
-    this.regPasswordErrorMsg = "";
-    this.regEmailErrorMsg = "";
-    this.regFirstNameErrorMsg = "";
-    this.regLastNameErrorMsg = "";
-    this.regPasswordError = false;
-    this.regEmailError = false;
-    this.regFirstNameError = false;
-    this.regLastNameError = false;
+    this.userRegValidation["passwordErrorMsg"] = "";
+    this.userRegValidation["emailErrorMsg"] = "";
+    this.userRegValidation["firstNameErrorMsg"] = "";
+    this.userRegValidation["lastNameErrorMsg"] = "";
+    this.userRegValidation["passwordError"] = false;
+    this.userRegValidation["emailError"] = false;
+    this.userRegValidation["firstNameError"] = false;
+    this.userRegValidation["lastNameError"] = false;
     let newUser = {
       firstName: this.userRegister["firstName"],
       lastName: this.userRegister["lastName"],
@@ -51,23 +59,28 @@ export class LoginRegisterComponent implements OnInit {
       password2: this.userRegister["password2"]
     };
     this.http.createUser(newUser).subscribe(data => {
-      this.errorMessage = Object.keys(data["errors"])[0];
-      switch (this.errorMessage.length > 0) {
-        case this.errorMessage === "password":
-          this.regPasswordError = true;
-          this.regPasswordErrorMsg = data["errors"]["password"];
+      let errorMessage = Object.keys(data["errors"])[0];
+      switch (errorMessage.length > 0) {
+        case errorMessage === "password":
+          console.log("password violation");
+          this.userRegValidation["passwordError"] = true;
+          this.userRegValidation["passwordErrorMsg"] =
+            data["errors"]["password"];
           return;
-        case this.errorMessage === "firstName":
-          this.regFirstNameError = true;
-          this.regFirstNameErrorMsg = data["errors"]["firstName"]["message"];
+        case errorMessage === "firstName":
+          this.userRegValidation["firstNameError"] = true;
+          this.userRegValidation["firstNameErrorMsg"] =
+            data["errors"]["firstName"]["message"];
           return;
-        case this.errorMessage === "lastName":
-          this.regLastNameError = true;
-          this.regLastNameErrorMsg = data["errors"]["lastName"]["message"];
+        case errorMessage === "lastName":
+          this.userRegValidation["lastNameError"] = true;
+          this.userRegValidation["lastNameErrorMsg"] =
+            data["errors"]["lastName"]["message"];
           return;
-        case this.errorMessage === "email":
-          this.regEmailError = true;
-          this.regEmailErrorMsg = data["errors"]["email"]["message"];
+        case errorMessage === "email":
+          this.userRegValidation["emailError"] = true;
+          this.userRegValidation["emailErrorMsg"] =
+            data["errors"]["email"]["message"];
           return;
       }
       this.userRegister["firstName"] = "";
@@ -76,7 +89,6 @@ export class LoginRegisterComponent implements OnInit {
       this.userRegister["password"] = "";
       this.userRegister["password2"] = "";
       this.regForm = true;
-      console.log("Response from onRegister", data);
     });
   }
   checkRegisterForm() {
@@ -93,14 +105,22 @@ export class LoginRegisterComponent implements OnInit {
     }
   }
   onLogin() {
+    this.userLoginValidation["error"] = false;
+    this.userLoginValidation["errorMsg"] = "";
     let user = {
       email: this.userLogin["email"],
       password: this.userLogin["password"]
     };
     this.http.loginUser(user).subscribe(user => {
       console.log("Response from onLogin", user);
-      this.userLogin["email"] = "";
-      this.userLogin["password"] = "";
+      if (user["errors"]) {
+        this.userLoginValidation["error"] = true;
+        this.userLoginValidation["errorMsg"] = user["errors"][0]["login"];
+      } else {
+        this.userLogin["email"] = "";
+        this.userLogin["password"] = "";
+        // Redirect to dashboard
+      }
     });
   }
 }

@@ -1,0 +1,81 @@
+.container {
+  padding: 10px 25px;
+  border: 3px solid var(--orange);
+  border-radius: 4px;
+  background: var(--lightGrey);
+  margin-bottom: 10px;
+
+  h1 {
+    color: var(--darkGrey);
+    font-size: 24pt;
+  }
+}
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 10px;
+  box-shadow: 0px 0px 4px grey;
+  border-radius: 4px;
+  background: white;
+}
+
+.image {
+  img {
+    width: 100%;
+  }
+}
+
+.image,
+.price {
+  flex: 1;
+}
+
+.title {
+  flex: 2;
+}
+
+input,
+textarea {
+  padding: 10px;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid var(--lightTeal);
+  margin: 5px;
+}
+
+button {
+  padding: 10px 15px !important;
+  border-radius: 4px !important;
+  margin: 5px !important;
+}
+
+@media only screen and (max-width: 480px) {
+  img {
+    padding: 0;
+  }
+  .container {
+    padding: 5px;
+    margin-bottom: 5px;
+    border: none;
+  }
+  .wrap {
+    flex-direction: column;
+  }
+
+  .image div,
+  .title div,
+  .price div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1 {
+    color: var(--orange) !important;
+    text-shadow: 1px 1px 2px var(--darkGrey);
+  }
+  button {
+    width: 100% !important;
+  }
+}

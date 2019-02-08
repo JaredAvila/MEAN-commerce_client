@@ -1,3 +1,46 @@
-<p>
-  create-listing works!
-</p>
+<div class="container">
+  <h1>Create Listing</h1>
+  <div class="wrap">
+    <div class="image">
+      <div>
+        <label for="image">Image URL: </label>
+        <br />
+        <input type="text" placeholder="Enter a URL" name="image" />
+        <img
+          src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="title">
+      <div>
+        <label for="title">Title: </label>
+        <br />
+        <input type="text" placeholder="Title" name="title" />
+      </div>
+      <div>
+        <label for="description">Description: </label>
+        <br />
+        <textarea
+          type="text"
+          name="description"
+          placeholder="Description"
+        ></textarea>
+      </div>
+    </div>
+    <div class="price">
+      <div>
+        <label for="price">Price: </label>
+        <br />
+        <input type="number" placeholder="Item Price" name="price" />
+      </div>
+      <div>
+        <label for="location">Location: </label>
+        <br />
+        <input type="text" placeholder="Location" name="location" />
+      </div>
+
+      <button class="btn btn-teal">Create</button>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,6 @@ ul {
     transition: all 250ms ease;
   }
   li:hover {
-    color: white;
+    color: var(--lightTeal);
   }
 }

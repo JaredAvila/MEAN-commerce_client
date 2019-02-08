@@ -1,3 +1,30 @@
-<p>
-  listings works!
-</p>
+<div class="container">
+  <div>
+    <form>
+      <label for="search"></label>
+      <input
+        type="text"
+        name="search"
+        [(ngModel)]="search"
+        placeholder="Search for an action figure"
+        (keyup)="onSearch()"
+      />
+    </form>
+  </div>
+  <div class="listingsWrap">
+    <div class="listings">
+      <app-listing></app-listing>
+      <app-listing></app-listing>
+      <app-listing></app-listing>
+      <app-listing></app-listing>
+      <app-listing></app-listing>
+      <app-listing></app-listing>
+      <app-listing></app-listing>
+      <app-listing></app-listing>
+      <app-listing></app-listing>
+      <app-listing></app-listing>
+      <app-listing></app-listing>
+      <app-listing></app-listing>
+    </div>
+  </div>
+</div>

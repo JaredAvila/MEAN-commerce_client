@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-listings',
-  templateUrl: './listings.component.html',
-  styleUrls: ['./listings.component.scss']
+  selector: "app-listings",
+  templateUrl: "./listings.component.html",
+  styleUrls: ["./listings.component.scss"]
 })
 export class ListingsComponent implements OnInit {
+  search: String = "";
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  onSearch() {
+    console.log("search works!");
   }
-
 }

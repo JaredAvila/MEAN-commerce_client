@@ -1,7 +1,11 @@
 :root {
-  --teal: #00b8ae;
+  --teal: #10837d;
+  --lightTeal: rgb(103, 214, 214);
   --lightGrey: rgb(238, 238, 238);
-  --darkGrey: rgb(82, 82, 82);
+  --darkGrey: rgb(54, 51, 51);
+  --orange: rgb(233, 105, 20);
+  --green: rgb(146, 228, 177);
+  --yellow: rgb(236, 225, 62);
 }
 
 * {
@@ -16,12 +20,13 @@ a {
 }
 
 .btn {
-  padding: 10px;
+  padding: 5px 0;
   border: 1px solid var(--darkGrey);
   border-radius: 25px;
   cursor: pointer;
   background: var(--lightGrey);
   outline: none;
+  font-size: 14pt;
   box-shadow: 0px 0px 4px grey;
   transition: all 250ms;
 }
@@ -48,10 +53,51 @@ a {
 
 .btn-teal:hover {
   background: rgb(34, 163, 163);
+  border: 1px solid rgb(34, 163, 163);
   color: var(--lightGrey);
 }
 
 .btn-teal:active {
   background: rgb(13, 131, 131);
+  border: 1px solid rgb(13, 131, 131);
   color: var(--lightGrey);
+}
+
+.btn-orange {
+  background: var(--orange);
+  border: 1px solid var(--orange);
+  color: white;
+  transition: all 250ms ease;
+}
+
+.btn-orange:hover {
+  background: rgb(170, 91, 26);
+  border: 1px solid rgb(170, 91, 26);
+  color: var(--lightGrey);
+}
+
+.btn-orange:active {
+  background: rgb(131, 67, 14);
+  border: 1px solid rgb(131, 67, 14);
+  color: var(--lightGrey);
+}
+
+.btn-yellow {
+  background: var(--yellow);
+  border: 1px solid var(--yellow);
+  color: black;
+  transition: all 250ms ease;
+  font-size: 14pt;
+}
+
+.btn-yellow:hover {
+  background: rgb(204, 194, 60);
+  border: 1px solid rgb(204, 194, 60);
+  color: var(--darkGrey);
+}
+
+.btn-yellow:active {
+  background: rgb(160, 152, 49);
+  border: 1px solid rgb(160, 152, 49);
+  color: var(--darkGrey);
 }

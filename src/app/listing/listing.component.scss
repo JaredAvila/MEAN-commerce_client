@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 4px grey;
+  margin-bottom: 10px;
+  background: var(--lightGrey);
+
+  img {
+    width: 27%;
+    max-height: 200px;
+    box-shadow: 0px 0px 4px grey;
+  }
+}
+.itemTitle {
+  width: 47%;
+  padding: 5px;
+}
+.itemPrice {
+  width: 15%;
+  padding: 5px;
+}
+h2 {
+  font-size: 24pt;
+  margin-bottom: 10px;
+}

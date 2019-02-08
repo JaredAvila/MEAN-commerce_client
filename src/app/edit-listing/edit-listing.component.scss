@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid var(--darkGrey);
+  border-radius: 4px;
+  padding: 10px;
+  margin: 5px;
+  background: white;
+}
+
+img {
+  width: 100%;
+}
+
+.image,
+.price {
+  flex: 1;
+}
+
+.title {
+  flex: 2;
+}
+
+button {
+  padding: 10px 15px !important;
+  border-radius: 4px !important;
+  margin: 5px !important;
+}
+input,
+textarea {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid var(--lightTeal);
+  outline: none;
+  margin: 5px;
+}
+
+@media only screen and (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    padding: 5px;
+    margin: 5px;
+    background: white;
+  }
+  .image,
+  .title,
+  .price {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
