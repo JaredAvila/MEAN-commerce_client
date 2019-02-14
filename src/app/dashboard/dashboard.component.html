@@ -1,3 +1,11 @@
 <div class="container">
-  <app-navbar></app-navbar> <app-listings></app-listings>
+  <nav>
+    <ul>
+      <li><a routerLink="/dash/home">Browse</a> |</li>
+      <li><a routerLink="/dash/edit">My Listings</a> |</li>
+      <li><a style="cursor: pointer" (click)="onLogOut()">Log Out</a></li>
+    </ul>
+    <h2>Welcome {{ userName }}</h2>
+  </nav>
+  <router-outlet></router-outlet>
 </div>

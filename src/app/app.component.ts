@@ -40,14 +40,14 @@ export class AppComponent {
       .subscribe(data => console.log("Response from removeAll", data));
   }
 
-  onLogOut() {
-    let user = {
-      userId: 123456
-    };
-    this.http
-      .onLogOut(user)
-      .subscribe(data => console.log("Response from onLogOut", data));
-  }
+  // onLogOut() {
+  //   let user = {
+  //     userId: 123456
+  //   };
+  //   this.http
+  //     .onLogOut(user)
+  //     .subscribe(data => console.log("Response from onLogOut", data));
+  // }
   createItem() {
     let item = {
       title: this.newItem["title"],

@@ -20,11 +20,14 @@ export class HttpService {
   loginUser(user) {
     return this._http.post("/api/login", user);
   }
+  getLoggedUser() {
+    return this._http.get("/api/getUser");
+  }
   removeAll() {
     return this._http.get("/api/removeAllUsers");
   }
-  onLogOut(user) {
-    return this._http.post("/api/logout", user);
+  onLogOut(userId: any) {
+    return this._http.post("/api/logout", userId);
   }
 
   // ITEM ROUTES

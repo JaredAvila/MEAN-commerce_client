@@ -2,6 +2,18 @@
   width: 80%;
   margin: auto;
 }
+ul {
+  li {
+    display: inline-block;
+    padding: 10px 5px;
+    text-decoration: underline;
+    color: var(--teal);
+    transition: all 250ms ease;
+  }
+  li:hover {
+    color: var(--lightTeal);
+  }
+}
 
 @media only screen and (max-width: 480px) {
   .container {

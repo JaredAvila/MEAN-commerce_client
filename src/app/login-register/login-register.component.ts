@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpService } from "../http.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-login-register",
@@ -7,7 +8,7 @@ import { HttpService } from "../http.service";
   styleUrls: ["./login-register.component.scss"]
 })
 export class LoginRegisterComponent implements OnInit {
-  constructor(private http: HttpService) {}
+  constructor(private http: HttpService, private router: Router) {}
 
   regForm: Boolean = true;
   errors: Array<Object> = [];
@@ -59,36 +60,40 @@ export class LoginRegisterComponent implements OnInit {
       password2: this.userRegister["password2"]
     };
     this.http.createUser(newUser).subscribe(data => {
-      let errorMessage = Object.keys(data["errors"])[0];
-      switch (errorMessage.length > 0) {
-        case errorMessage === "password":
-          console.log("password violation");
-          this.userRegValidation["passwordError"] = true;
-          this.userRegValidation["passwordErrorMsg"] =
-            data["errors"]["password"];
-          return;
-        case errorMessage === "firstName":
-          this.userRegValidation["firstNameError"] = true;
-          this.userRegValidation["firstNameErrorMsg"] =
-            data["errors"]["firstName"]["message"];
-          return;
-        case errorMessage === "lastName":
-          this.userRegValidation["lastNameError"] = true;
-          this.userRegValidation["lastNameErrorMsg"] =
-            data["errors"]["lastName"]["message"];
-          return;
-        case errorMessage === "email":
-          this.userRegValidation["emailError"] = true;
-          this.userRegValidation["emailErrorMsg"] =
-            data["errors"]["email"]["message"];
-          return;
+      if (data["errors"]) {
+        let errorMessage = Object.keys(data["errors"])[0];
+        switch (errorMessage.length > 0) {
+          case errorMessage === "password":
+            console.log("password violation");
+            this.userRegValidation["passwordError"] = true;
+            this.userRegValidation["passwordErrorMsg"] =
+              data["errors"]["password"];
+            return;
+          case errorMessage === "firstName":
+            this.userRegValidation["firstNameError"] = true;
+            this.userRegValidation["firstNameErrorMsg"] =
+              data["errors"]["firstName"]["message"];
+            return;
+          case errorMessage === "lastName":
+            this.userRegValidation["lastNameError"] = true;
+            this.userRegValidation["lastNameErrorMsg"] =
+              data["errors"]["lastName"]["message"];
+            return;
+          case errorMessage === "email":
+            this.userRegValidation["emailError"] = true;
+            this.userRegValidation["emailErrorMsg"] =
+              data["errors"]["email"]["message"];
+            return;
+        }
+        this.userRegister["firstName"] = "";
+        this.userRegister["lastName"] = "";
+        this.userRegister["email"] = "";
+        this.userRegister["password"] = "";
+        this.userRegister["password2"] = "";
+        this.regForm = true;
+      } else {
+        this.router.navigate(["/dash/home"]);
       }
-      this.userRegister["firstName"] = "";
-      this.userRegister["lastName"] = "";
-      this.userRegister["email"] = "";
-      this.userRegister["password"] = "";
-      this.userRegister["password2"] = "";
-      this.regForm = true;
     });
   }
   checkRegisterForm() {
@@ -120,6 +125,7 @@ export class LoginRegisterComponent implements OnInit {
         this.userLogin["email"] = "";
         this.userLogin["password"] = "";
         // Redirect to dashboard
+        this.router.navigate(["/dash/home"]);
       }
     });
   }
