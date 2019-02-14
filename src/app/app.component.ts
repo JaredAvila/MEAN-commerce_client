@@ -48,19 +48,7 @@ export class AppComponent {
   //     .onLogOut(user)
   //     .subscribe(data => console.log("Response from onLogOut", data));
   // }
-  createItem() {
-    let item = {
-      title: this.newItem["title"],
-      description: this.newItem["description"],
-      price: this.newItem["price"],
-      location: this.newItem["location"],
-      image: this.newItem["image"],
-      id: this.newItem["userId"]
-    };
-    this.http
-      .createItem(item)
-      .subscribe(data => console.log("Response from createItem: ", data));
-  }
+
   getAllItems() {
     this.http
       .getAllItems()

@@ -5,7 +5,12 @@
       <div>
         <label for="image">Image URL: </label>
         <br />
-        <input type="text" placeholder="Enter a URL" name="image" />
+        <input
+          type="text"
+          placeholder="Enter a URL"
+          name="image"
+          [(ngModel)]="newItem['image']"
+        />
         <img
           src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png"
           alt=""
@@ -16,7 +21,12 @@
       <div>
         <label for="title">Title: </label>
         <br />
-        <input type="text" placeholder="Title" name="title" />
+        <input
+          type="text"
+          placeholder="Title"
+          name="title"
+          [(ngModel)]="newItem['title']"
+        />
       </div>
       <div>
         <label for="description">Description: </label>
@@ -25,6 +35,7 @@
           type="text"
           name="description"
           placeholder="Description"
+          [(ngModel)]="newItem['description']"
         ></textarea>
       </div>
     </div>
@@ -32,15 +43,27 @@
       <div>
         <label for="price">Price: </label>
         <br />
-        <input type="number" placeholder="Item Price" name="price" />
+        <input
+          type="number"
+          placeholder="Item Price"
+          name="price"
+          [(ngModel)]="newItem['price']"
+        />
       </div>
       <div>
         <label for="location">Location: </label>
         <br />
-        <input type="text" placeholder="Location" name="location" />
+        <input
+          type="text"
+          placeholder="Location"
+          name="location"
+          [(ngModel)]="newItem['location']"
+        />
       </div>
 
-      <button class="btn btn-teal">Create</button>
+      <button (click)="createItem()" class="btn btn-teal">Create</button>
+      <p *ngIf="errorMessage" class="errorText">{{ errorMessage }}</p>
+      <p *ngIf="successMessage" class="successText">{{ successMessage }}</p>
     </div>
   </div>
 </div>

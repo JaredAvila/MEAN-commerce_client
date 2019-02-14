@@ -50,6 +50,12 @@ button {
   border-radius: 4px !important;
   margin: 5px !important;
 }
+.errorText {
+  color: red;
+}
+.successText {
+  color: var(--green);
+}
 
 @media only screen and (max-width: 480px) {
   img {
