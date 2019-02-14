@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 export class LoginRegisterComponent implements OnInit {
   constructor(private http: HttpService, private router: Router) {}
 
+  item: Object;
   regForm: Boolean = true;
   errors: Array<Object> = [];
   // errorMessage: any;
@@ -41,7 +42,19 @@ export class LoginRegisterComponent implements OnInit {
     errorMsg: ""
   };
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getRandomItem();
+  }
+  getRandomItem() {
+    this.http.getRandomItem().subscribe(data => {
+      if (data["message"] === "error") {
+        this.getRandomItem();
+      } else {
+        console.log(data);
+        this.item = data["item"];
+      }
+    });
+  }
 
   onRegister() {
     this.userRegValidation["passwordErrorMsg"] = "";

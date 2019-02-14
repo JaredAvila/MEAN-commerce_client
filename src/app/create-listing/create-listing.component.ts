@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { HttpService } from "../http.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-create-listing",
@@ -7,24 +8,21 @@ import { HttpService } from "../http.service";
   styleUrls: ["./create-listing.component.scss"]
 })
 export class CreateListingComponent implements OnInit {
-  constructor(private http: HttpService) {}
+  @Input() userId: String;
+  @Output() emitter = new EventEmitter();
   newItem: Object = {
     title: "",
     description: "",
     price: 0,
     location: "",
-    image: "",
-    userId: ""
+    image: ""
   };
   errorMessage: String;
-  errorMessages: any;
   successMessage: String;
-  ngOnInit() {
-    this.http.getLoggedUser().subscribe(data => {
-      console.log("heres createItem: ", data["userId"]);
-      this.newItem["userId"] = data["userId"];
-    });
-  }
+
+  constructor(private http: HttpService, private router: Router) {}
+
+  ngOnInit() {}
   createItem() {
     let item = {
       title: this.newItem["title"],
@@ -32,7 +30,7 @@ export class CreateListingComponent implements OnInit {
       price: this.newItem["price"],
       location: this.newItem["location"],
       image: this.newItem["image"],
-      userId: this.newItem["userId"]
+      userId: this.userId
     };
     this.http.createItem(item).subscribe(data => {
       console.log("response: ", data);
@@ -42,9 +40,12 @@ export class CreateListingComponent implements OnInit {
         this.newItem["price"] = "";
         this.newItem["location"] = "";
         this.newItem["image"] = "";
-        this.newItem["userId"] = "";
         this.errorMessage = "";
         this.successMessage = "Item added successfully";
+        setTimeout(() => {
+          this.successMessage = "";
+        }, 3000);
+        this.emitter.emit();
       } else {
         this.successMessage = "";
         switch (data["message"] === "error") {

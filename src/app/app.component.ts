@@ -33,22 +33,6 @@ export class AppComponent {
       .getUser(this.newItem["userId"])
       .subscribe(data => console.log("Response from getUserById: ", data));
   }
-
-  removeAll() {
-    this.http
-      .removeAll()
-      .subscribe(data => console.log("Response from removeAll", data));
-  }
-
-  // onLogOut() {
-  //   let user = {
-  //     userId: 123456
-  //   };
-  //   this.http
-  //     .onLogOut(user)
-  //     .subscribe(data => console.log("Response from onLogOut", data));
-  // }
-
   getAllItems() {
     this.http
       .getAllItems()
@@ -65,11 +49,6 @@ export class AppComponent {
       .subscribe(data => console.log("Response from searchItems", data));
   }
 
-  getRandomItem() {
-    this.http
-      .getRandomItem()
-      .subscribe(data => console.log("Response from getRandomItem", data));
-  }
   onEditItem() {
     let item = {
       title: this.newItem["title"],

@@ -1,14 +1,17 @@
-<app-create-listing></app-create-listing>
+<app-create-listing
+  [userId]="userId"
+  (emitter)="refreshList()"
+></app-create-listing>
 <div class="container">
   <h1>Edit/Delete Listings</h1>
   <div class="wrap">
     <div class="listings">
-      <app-edit-listing></app-edit-listing>
-      <app-edit-listing></app-edit-listing>
-      <app-edit-listing></app-edit-listing>
-      <app-edit-listing></app-edit-listing>
-      <app-edit-listing></app-edit-listing>
-      <app-edit-listing></app-edit-listing>
+      <app-edit-listing
+        *ngFor="let item of userItems"
+        [item]="item"
+        [userId]="userId"
+        (emitter)="refreshList()"
+      ></app-edit-listing>
     </div>
   </div>
 </div>

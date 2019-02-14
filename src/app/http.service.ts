@@ -23,7 +23,7 @@ export class HttpService {
   getLoggedUser() {
     return this._http.get("/api/getUser");
   }
-  removeAll() {
+  removeAllUsers() {
     return this._http.get("/api/removeAllUsers");
   }
   onLogOut(userId: any) {
@@ -59,5 +59,8 @@ export class HttpService {
   }
   deleteItem(itemId, userId) {
     return this._http.delete(`/api/item/${itemId}/${userId}`);
+  }
+  removeAllItems() {
+    return this._http.get("/api/removeAllItems");
   }
 }

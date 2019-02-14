@@ -13,18 +13,7 @@
   </div>
   <div class="listingsWrap">
     <div class="listings">
-      <app-listing></app-listing>
-      <app-listing></app-listing>
-      <app-listing></app-listing>
-      <app-listing></app-listing>
-      <app-listing></app-listing>
-      <app-listing></app-listing>
-      <app-listing></app-listing>
-      <app-listing></app-listing>
-      <app-listing></app-listing>
-      <app-listing></app-listing>
-      <app-listing></app-listing>
-      <app-listing></app-listing>
+      <app-listing *ngFor="let item of items" [item]="item"></app-listing>
     </div>
   </div>
 </div>

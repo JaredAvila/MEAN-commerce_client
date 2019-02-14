@@ -60,7 +60,6 @@
           [(ngModel)]="newItem['location']"
         />
       </div>
-
       <button (click)="createItem()" class="btn btn-teal">Create</button>
       <p *ngIf="errorMessage" class="errorText">{{ errorMessage }}</p>
       <p *ngIf="successMessage" class="successText">{{ successMessage }}</p>

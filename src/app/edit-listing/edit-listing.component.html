@@ -1,36 +1,39 @@
 <div class="container">
+  <img [src]="item['image']" alt="" />
   <div class="image">
     <label for="image">Image URL: </label>
-    <input type="text" placeholder="Enter a URL" name="image" />
-    <img
-      src="http://saveabandonedbabies.org/wp-content/uploads/2015/08/default.png"
-      alt=""
-    />
+    <input type="text" name="image" [(ngModel)]="newItem['image']" />
   </div>
   <div class="title">
     <label for="title">Title: </label>
     <br />
-    <input type="text" placeholder="Title" name="title" />
+    <input type="text" name="title" [(ngModel)]="newItem['title']" />
     <br />
     <label for="description">Description: </label>
     <br />
     <textarea
       type="text"
       name="description"
-      placeholder="Description"
+      [(ngModel)]="newItem['description']"
     ></textarea>
     <br />
   </div>
   <div class="price">
     <label for="price">Price: </label>
     <br />
-    <input type="number" placeholder="Item Price" name="price" />
+    <input type="number" name="price" [(ngModel)]="newItem['price']" />
     <br />
     <label for="location">Location: </label>
     <br />
-    <input type="text" placeholder="Location" name="location" />
+    <input type="text" name="location" [(ngModel)]="newItem['location']" />
     <br />
-    <button class="btn btn-yellow">Update</button>
-    <button class="btn btn-orange">Delete</button>
+    <button class="btn btn-yellow" (click)="onUpdate()">Update</button>
+    <button class="btn btn-orange" (click)="onDelete()">Delete</button>
+    <!-- <button class="btn btn-orange" (click)="onDeleteUsers()">
+      Delete Users
+    </button>
+    <button class="btn btn-orange" (click)="onDeleteItems()">
+      Delete Items
+    </button> -->
   </div>
 </div>
