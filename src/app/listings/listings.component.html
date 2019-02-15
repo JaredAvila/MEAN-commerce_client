@@ -4,16 +4,25 @@
       <label for="search"></label>
       <input
         type="text"
-        name="search"
-        [(ngModel)]="search"
+        name="searchData"
+        [(ngModel)]="searchData"
         placeholder="Search for an action figure"
         (keyup)="onSearch()"
       />
     </form>
   </div>
   <div class="listingsWrap">
-    <div class="listings">
-      <app-listing *ngFor="let item of items" [item]="item"></app-listing>
+    <div class="listings" *ngIf="itemCheck === true">
+      <app-listing
+        *ngFor="let item of items"
+        [item]="item"
+        [front]="front"
+        [userId]="userId"
+        (emitter)="fetchItems()"
+      ></app-listing>
+    </div>
+    <div class="noItem" *ngIf="itemCheck === false">
+      <h2>No items were found. Try again</h2>
     </div>
   </div>
 </div>

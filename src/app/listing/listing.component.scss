@@ -26,3 +26,21 @@ h2 {
   font-size: 24pt;
   margin-bottom: 10px;
 }
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  padding: 100px;
+  background: var(--lightGrey);
+  border: 2px solid var(--darkGrey);
+  border-radius: 4px;
+  box-shadow: 2px 2px 8px black;
+
+  p {
+    padding: 10px;
+  }
+}
+.hidden {
+  display: none !important;
+}

@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 export class LoginRegisterComponent implements OnInit {
   constructor(private http: HttpService, private router: Router) {}
 
+  front: Boolean = true;
   item: Object;
   regForm: Boolean = true;
   errors: Array<Object> = [];

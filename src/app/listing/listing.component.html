@@ -9,11 +9,32 @@
       {{ item.price | currency }}
     </h2>
     <h5>{{ item.location }}</h5>
-    <button class="btn btn-teal" style="margin-top: 10px; padding: 10px">
+    <button
+      *ngIf="front === false && item.owner != userId"
+      class="btn btn-teal"
+      style="margin-top: 10px; padding: 10px"
+      (click)="onContactClick()"
+    >
       Contact
     </button>
-    <button class="btn btn-yellow" style="margin-top: 10px; padding: 10px">
+    <button
+      class="btn btn-yellow"
+      *ngIf="front === false && item.owner == userId"
+      style="margin-top: 10px; padding: 10px"
+      (click)="onDeleteClick()"
+    >
       Delete
     </button>
   </div>
+</div>
+<div class="modal" [ngClass]="{ hidden: contactCheck }">
+  <h4>Contact Info:</h4>
+  <p>Name: {{ userName }}</p>
+  <p>Email: {{ userEmail }}</p>
+  <button
+    style="outline: none; padding: 3px 7px; font-size: 14pt; border-radius:50%"
+    (click)="onCloseModal()"
+  >
+    X
+  </button>
 </div>
